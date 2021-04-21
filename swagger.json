@@ -1,0 +1,112 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "INTRO - SOLID",
+    "description": "INTRO - SOLID",
+    "version": "1.0.0",
+    "contact": {
+      "email": "eduardo.spiandorello@gmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a new user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Uncle bob",
+                  "email": "bob@mailinator.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Users"],
+        "summary": "List all users",
+        "description": "List all users",
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/users/:user_id/admin": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "Turn user admin",
+        "description": "Turn user admin",
+        "parameters": [
+          {
+            "name": "user_id",
+            "required": true,
+            "description": "user id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/users/:user_id": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Show user profile",
+        "description": "Show user profile",
+        "parameters": [
+          {
+            "name": "user_id",
+            "required": true,
+            "description": "user id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    }
+  }
+}
